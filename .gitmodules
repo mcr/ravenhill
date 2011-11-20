@@ -1,0 +1,15 @@
+[submodule "vendor/plugins/can-o-pg"]
+	path = vendor/plugins/can-o-pg
+	url = git://github.com/mcr/can-o-pg.git
+[submodule "vendor/plugins/cancan"]
+	path = vendor/plugins/cancan
+	url = git://github.com/ryanb/cancan.git
+[submodule "vendor/plugins/render_component"]
+	path = vendor/plugins/render_component
+	url = git://github.com/vhochstein/render_component.git
+[submodule "vendor/plugins/verification"]
+	path = vendor/plugins/verification
+	url = git://github.com/rails/verification.git
+[submodule "vendor/plugins/dynamic_form"]
+	path = vendor/plugins/dynamic_form
+	url = git://github.com/rails/dynamic_form.git

@@ -5,7 +5,7 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails',     :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'json'
 
@@ -17,17 +17,19 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git' #, :branch => 'rails-3.1'
 gem 'jquery-rails'
+gem 'mustang'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Use unicorn as the web server
-# gem 'unicorn'
+gem 'unicorn'
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano'
 
 # To use debugger
-# gem 'ruby-debug'
+gem 'ruby-debug'
 
