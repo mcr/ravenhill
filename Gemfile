@@ -17,6 +17,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git' #, :branch => 'rails-3.1'
 gem 'jquery-rails'
 gem 'mustang'
