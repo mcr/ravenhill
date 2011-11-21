@@ -3,7 +3,7 @@ class CreateGuardians < ActiveRecord::Migration
     create_table :guardians do |t|
       t.string :firstname
       t.string :lastname
-      t.integer :newsletters
+      t.string :newsletters
       t.integer :updated
       t.string :address1
       t.string :address2

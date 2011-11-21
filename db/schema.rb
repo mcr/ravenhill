@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20111120225258) do
   create_table "guardians", :force => true do |t|
     t.string   "firstname"
     t.string   "lastname"
-    t.integer  "newsletters"
+    t.string   "newsletters"
     t.integer  "updated"
     t.string   "address1"
     t.string   "address2"
