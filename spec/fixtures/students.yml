@@ -1,0 +1,6 @@
+child01:
+        id: 99
+        firstname: John
+        lastname: Smith
+        grade: 'K'
+        teacher_id: 1
