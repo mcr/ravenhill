@@ -24,7 +24,7 @@ end
 gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git' # master supports rails 3.1 and 3.2, :branch => 'rails-3.2'
 #gem 'active_scaffold_vho', :git => 'git://github.com/vhochstein/active_scaffold.git', :branch => 'rails-3.0'
 gem 'jquery-rails'
-#gem 'mustang'
+gem 'therubyracer'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
