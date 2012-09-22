@@ -7,4 +7,6 @@ Ravenhill::Application.routes.draw do
     as_routes
   end
 
+  root :to => "guardians#show"
+
 end

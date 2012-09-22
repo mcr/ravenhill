@@ -21,9 +21,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-gem 'active_scaffold', "~> 3.2.16"
-#gem 'active_scaffold', :git => 'git://github.com/activescaffold/active_scaffold.git' # master supports rails 3.1 and 3.2, :branch => 'rails-3.2'
-#gem 'active_scaffold_vho', :git => 'git://github.com/vhochstein/active_scaffold.git', :branch => 'rails-3.0'
+gem 'render_component_vho'
+gem 'active_scaffold_vho'
 gem 'jquery-rails'
 gem 'therubyracer'
 

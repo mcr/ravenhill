@@ -1,3 +1,5 @@
+require "bundler/capistrano"
+
 set :application, "ravenhill"
 set :logname, "#{ENV['LOGNAME']}"
 set :repository,  "git+ssh://#{logname}@code.credil.org/git/ravenhill"
@@ -14,6 +16,9 @@ set :use_sudo, false
 set :git_enable_submodules, true
 set :deploy_to, "/data/#{user}/#{application}"
 
+# added --no-prune
+set :bundle_flags,    "--deployment --quiet --no-prune"
+
 namespace :deploy do
   task :update_database_yml, :roles => [:app,:web] do
     db_config = "/data/#{user}/database.yml"
@@ -27,3 +32,14 @@ namespace :deploy do
   after "deploy:update_code", "deploy:update_database_yml"
 end
 
+# If you are using Passenger mod_rails uncomment this:
+# if you're still using the script/reapear helper you will need
+# these http://github.com/rails/irs_process_scripts
+
+namespace :deploy do
+  task :start do ; end
+  task :stop do ; end
+  task :restart, :roles => :app, :except => { :no_release => true } do
+    run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
+  end
+end
