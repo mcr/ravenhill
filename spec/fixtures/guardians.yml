@@ -5,3 +5,13 @@ u01:
         homephone: 6135551212
         email: mcr@sandelman.ca
         postalcode: H0H1A1
+
+admin:
+        id: 4
+        admin: true
+        fullname: Admin Login
+        confirmed_at: Jan 15 16:56:55 -0500 2011
+        email: admin@example.com
+        encrypted_password: $2a$10$ZxCsWO0ytIXYgBVxfPZUPeqiN3b9bYJ/tlDzTbGyOwctSDTEsFPOq
+        # password is "test1"
+
