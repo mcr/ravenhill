@@ -5,4 +5,8 @@ class Student < ActiveRecord::Base
 
   scope :active,   :conditions => { :updated => true }
   scope :inactive, :conditions => { :updated => false }
+
+  def to_label
+    firstname
+  end
 end

@@ -1,4 +1,5 @@
 require "bundler/capistrano"
+load 'deploy/assets'
 
 set :application, "ravenhill"
 set :logname, "#{ENV['LOGNAME']}"
@@ -30,6 +31,7 @@ namespace :deploy do
     puts "Ran update database_yml"
   end
   after "deploy:update_code", "deploy:update_database_yml"
+  before "deploy:assets:precompile", "deploy:update_database_yml"
 end
 
 # If you are using Passenger mod_rails uncomment this:
