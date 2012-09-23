@@ -11,6 +11,7 @@ admin:
         #admin: true
         firstname: Admin
         lastname: Login
+        admin: true
         email: admin@example.com
         encrypted_password: "$2a$10$zh4aY1chlqcpUCN92rLuZ.3jfZVrqUp6Cs2vB1YGwfyw9OVaXkFZC"
         # password is "test1"
