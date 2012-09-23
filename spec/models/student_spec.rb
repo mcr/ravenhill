@@ -9,5 +9,10 @@ describe Student do
       child01.guardians.count.should == 1
     end
   end
+  
+  it "should have a teacher" do
+    s = Student.new
+    s.teacher.should be_nil
+  end
 end
 

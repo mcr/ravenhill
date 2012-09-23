@@ -19,6 +19,9 @@ class GuardiansController < ApplicationController
       :include_email,
       :students
     ]
+    config.columns[:email].inplace_edit = true 
+    config.columns[:firstname].inplace_edit = true 
+    config.columns[:lastname].inplace_edit = true 
   end
 
   def foo

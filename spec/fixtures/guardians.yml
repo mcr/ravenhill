@@ -9,8 +9,8 @@ u01:
 admin:
         id: 4
         #admin: true
-        fullname: Admin Login
-        confirmed_at: Jan 15 16:56:55 -0500 2011
+        firstname: Admin
+        lastname: Login
         email: admin@example.com
         encrypted_password: "$2a$10$zh4aY1chlqcpUCN92rLuZ.3jfZVrqUp6Cs2vB1YGwfyw9OVaXkFZC"
         # password is "test1"

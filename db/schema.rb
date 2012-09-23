@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120922234620) do
+ActiveRecord::Schema.define(:version => 20120923015617) do
 
   create_table "guardians", :force => true do |t|
     t.string   "firstname"
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(:version => 20120922234620) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "guardians", ["email"], :name => "index_guardians_on_email", :unique => true
   add_index "guardians", ["reset_password_token"], :name => "index_guardians_on_reset_password_token", :unique => true
 
   create_table "student_guardians", :force => true do |t|
@@ -93,6 +92,13 @@ ActiveRecord::Schema.define(:version => 20120922234620) do
     t.integer  "teacher_id"
     t.integer  "display"
     t.boolean  "updated"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "teachers", :force => true do |t|
+    t.string   "name"
+    t.string   "room"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
