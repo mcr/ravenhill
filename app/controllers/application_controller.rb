@@ -17,4 +17,8 @@ class ApplicationController < ActionController::Base
     @current_ability ||= Ability.new(current_guardian, params[:format])
   end
 
+  def authenticate_admin!
+    authenticate_guardian!
+    current_guardian.admin?
+  end
 end
