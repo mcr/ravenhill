@@ -8,6 +8,7 @@ class StudentsController < ApplicationController
     if current_guardian.admin?
       active_scaffold_config.update.columns = [
 	:guardians,
+	:display,
 	:firstname,
 	:lastname,
 	:grade,
@@ -15,6 +16,7 @@ class StudentsController < ApplicationController
       ]
     else
       active_scaffold_config.update.columns = [
+	:display,
 	:firstname,
 	:lastname,
 	:grade,
@@ -39,6 +41,8 @@ class StudentsController < ApplicationController
     #config.columns[:teacher].inplace_edit = :ajax
     config.columns[:teacher].form_ui = :select
     config.columns[:guardians].form_ui = :select
+    config.columns[:display].form_ui = :checkbox
+    config.columns[:display].label = "Include in directory?"
   end
 
   def beginning_of_chain
