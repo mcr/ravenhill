@@ -15,6 +15,7 @@ class Guardian < ActiveRecord::Base
   scope :active, lambda {
     includes(:students).merge(Student.active)
   }
+  scope :mortal, :conditions => { :admin => false }
 
   def as_csv
     [ lastname, firstname, homephone, email ].join(',')

@@ -55,4 +55,15 @@ namespace :ravenhill do
   task :graduated => :environment do
     Student.graduated.delete_all
   end
+
+  desc "Remove parents that have no children"
+  task :emptynests => :environment do
+    Guardian.mortal.each { |p|
+      if p.students.count == 0
+	puts "Removing parent: #{p.firstname} #{p.lastname}"
+	debugger
+	p.delete unless ENV['JUSTKIDDING']
+      end
+    }
+  end
 end
