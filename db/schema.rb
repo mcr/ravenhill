@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120923015617) do
+ActiveRecord::Schema.define(:version => 20120923200246) do
 
   create_table "guardians", :force => true do |t|
     t.string   "firstname"
@@ -63,9 +63,9 @@ ActiveRecord::Schema.define(:version => 20120923015617) do
     t.integer  "Staff_Appreciation_i"
     t.integer  "Garden_Sale_i"
     t.integer  "Back_to_Nature_i"
-    t.datetime "created_at",                                    :null => false
-    t.datetime "updated_at",                                    :null => false
-    t.string   "encrypted_password",            :default => "", :null => false
+    t.datetime "created_at",                                       :null => false
+    t.datetime "updated_at",                                       :null => false
+    t.string   "encrypted_password",            :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120923015617) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "admin",                         :default => false
   end
 
   add_index "guardians", ["reset_password_token"], :name => "index_guardians_on_reset_password_token", :unique => true
@@ -81,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20120923015617) do
   create_table "student_guardians", :force => true do |t|
     t.integer  "student_id"
     t.integer  "guardian_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "students", :force => true do |t|
