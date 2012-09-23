@@ -61,7 +61,6 @@ namespace :ravenhill do
     Guardian.mortal.each { |p|
       if p.students.count == 0
 	puts "Removing parent: #{p.firstname} #{p.lastname}"
-	debugger
 	p.delete unless ENV['JUSTKIDDING']
       end
     }
