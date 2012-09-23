@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111122012515) do
+ActiveRecord::Schema.define(:version => 20120922234620) do
 
   create_table "guardians", :force => true do |t|
     t.string   "firstname"
@@ -63,9 +63,21 @@ ActiveRecord::Schema.define(:version => 20111122012515) do
     t.integer  "Staff_Appreciation_i"
     t.integer  "Garden_Sale_i"
     t.integer  "Back_to_Nature_i"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.datetime "created_at",                                    :null => false
+    t.datetime "updated_at",                                    :null => false
+    t.string   "encrypted_password",            :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",                 :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "guardians", ["email"], :name => "index_guardians_on_email", :unique => true
+  add_index "guardians", ["reset_password_token"], :name => "index_guardians_on_reset_password_token", :unique => true
 
   create_table "student_guardians", :force => true do |t|
     t.integer  "student_id"
