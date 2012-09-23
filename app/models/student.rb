@@ -5,8 +5,9 @@ class Student < ActiveRecord::Base
 
   scope :active,   :conditions => { :updated => true }
   scope :inactive, :conditions => { :updated => false }
+  default_scope order('lastname ASC')
 
   def to_label
-    firstname
+    "#{lastname}, #{firstname}"
   end
 end

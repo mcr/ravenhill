@@ -24,9 +24,8 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
-gem 'render_component_vho'
-gem 'active_scaffold_vho'
 gem 'jquery-rails'
+gem 'active_scaffold'
 gem 'therubyracer'
 
 # To use ActiveModel has_secure_password

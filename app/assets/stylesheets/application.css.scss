@@ -1,1 +1,19 @@
-@import "active_scaffold"
+@import "active_scaffold";
+
+ul.guardians-input.checkbox-list {
+  width: 80%;
+}
+
+ul.guardians-input.checkbox-list li {
+  float: left;
+  min-width: 170px;
+}
+
+ul.students-input.checkbox-list {
+  width: 80%;
+}
+
+ul.students-input.checkbox-list li {
+  float: left;
+  min-width: 170px;
+}

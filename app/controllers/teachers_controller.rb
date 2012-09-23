@@ -8,7 +8,9 @@ class TeachersController < ApplicationController
       :students
     ]
     config.update.columns.exclude [
-      :students
     ]
+    config.columns[:students].form_ui = :select
+    config.columns[:students].show_blank_record = false
+    config.columns[:students].options = {:draggable_lists => true}
   end
 end

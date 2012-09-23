@@ -19,4 +19,8 @@ class Guardian < ActiveRecord::Base
   def as_csv
     [ lastname, firstname, homephone, email ].join(',')
   end
+
+  def to_label
+    "#{firstname} #{lastname}"
+  end
 end
