@@ -19,6 +19,11 @@ class GuardiansController < ApplicationController
       :include_email,
       :students
     ]
+    config.update.columns.exclude [
+      :student_guardians,
+      :students
+    ]
+    config.columns[:students].show_blank_record = false
     config.columns[:email].inplace_edit = true 
     config.columns[:firstname].inplace_edit = true 
     config.columns[:lastname].inplace_edit = true 

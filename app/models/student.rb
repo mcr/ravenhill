@@ -11,4 +11,5 @@ class Student < ActiveRecord::Base
   def to_label
     "#{lastname}, #{firstname}"
   end
+
 end
