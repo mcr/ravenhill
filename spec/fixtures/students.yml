@@ -4,3 +4,13 @@ child01:
         lastname: Smith
         grade: 'K'
         teacher_id: 1
+
+child101:
+  id: 101
+  firstname: Patrick
+  lastname: Stewart
+  #teacher_id: nil
+
+
+  
+  

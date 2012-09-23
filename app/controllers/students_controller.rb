@@ -15,7 +15,7 @@ class StudentsController < ApplicationController
     ]
 
     config.columns[:teacher].show_blank_record = false
-    config.columns[:teacher].inplace_edit = :ajax
+    #config.columns[:teacher].inplace_edit = :ajax
     config.columns[:teacher].form_ui = :select
     config.columns[:guardians].form_ui = :select
   end

@@ -5,6 +5,7 @@ class Student < ActiveRecord::Base
 
   scope :active,   :conditions => { :updated => true }
   scope :inactive, :conditions => { :updated => false }
+  scope :graduated, :conditions => [ "teacher_id IS NULL" ]
   default_scope order('lastname ASC')
 
   def to_label

@@ -50,4 +50,9 @@ namespace :ravenhill do
       }
     }
   end
+
+  desc "Remove kids that have no valid teacher"
+  task :graduated => :environment do
+    Student.graduated.delete_all
+  end
 end
