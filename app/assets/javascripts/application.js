@@ -1,2 +1,2 @@
-= require active_scaffold
+//= require active_scaffold
 

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def current_ability
-    @current_ability ||= Ability.new(current_user, params[:format])
+    @current_ability ||= Ability.new(current_guardian, params[:format])
   end
 
 end

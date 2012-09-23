@@ -13,6 +13,12 @@ class GuardiansController < ApplicationController
   end
 
   active_scaffold :guardian do |config|
+    config.list.columns = [
+      :email,
+      :firstname, :lastname,
+      :include_email,
+      :students
+    ]
   end
 
   def foo
