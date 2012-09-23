@@ -4,7 +4,8 @@ class Ability
   def initialize(guardian, format)
     guardian ||= Guardian.new
 
-    Rails.logger.debug "Access ability setup for #{guardian.email}, format=#{format}"
+    kind = guardian.admin? ? "Admin" : "Normal"
+    Rails.logger.debug "#{kind} access ability setup for #{guardian.email}, format=#{format}"
 
     @guardian = guardian
 
