@@ -17,3 +17,20 @@ ul.students-input.checkbox-list li {
   float: left;
   min-width: 170px;
 }
+
+li.form-element.volunteerbox {
+  padding-bottom: 0px;
+  margin-bottom: 4px;
+  border-bottom: 1px dashed grey;
+  float: left;
+  min-width: 40px;
+}
+
+li.form-element.volunteerbox dt {
+  padding-bottom: 0px;
+}
+
+div.update-view.guardians-view.view ol {
+  border: 3px solid green;
+  position: relative;	
+}
