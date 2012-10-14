@@ -11,6 +11,45 @@ describe Guardian do
   end
 
   describe "confirmation" do
+    it "should derive confirmation year from rounding down to previous sept" do
+      u01 = Guardian.new
+
+      n = Time.local(2012,"jan",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"feb",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"mar",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"apr",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"may",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"jun",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"jul",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2011
+
+      n = Time.local(2012,"aug",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2012
+
+      n = Time.local(2012,"sep",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2012
+
+      n = Time.local(2012,"oct",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2012
+
+      n = Time.local(2012,"nov",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2012
+
+      n = Time.local(2012,"dec",1,20,15,1)
+      u01.current_confirmation_year(n).should == 2012
+    end
     it "should not send out a confirmation email if already confirmed" do
       u01 = guardians(:u01)
       

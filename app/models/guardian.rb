@@ -30,4 +30,16 @@ class Guardian < ActiveRecord::Base
     return false if lastconfirmed < year
     return true
   end
+
+  def current_confirmation_year(n = Time.now)
+    year = n.year
+    month = n.month
+
+    # if after July, then it's next year
+    if month > 7
+      return year
+    else
+      return (year-1)
+    end
+  end
 end
