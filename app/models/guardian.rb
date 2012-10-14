@@ -1,10 +1,11 @@
 class Guardian < ActiveRecord::Base
   include FixtureSave
   # Include default devise modules. Others available are:
-  # :token_authenticatable, :confirmable, :validatable
+  # :confirmable, :validatable
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, #:registerable,
-         :recoverable, :rememberable, :trackable
+         :recoverable, :rememberable, :trackable,
+         :token_authenticatable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
@@ -41,5 +42,26 @@ class Guardian < ActiveRecord::Base
     else
       return (year-1)
     end
+  end
+
+  def send_confirmation!
+    unless confirmed_for?(current_confirmation_year)
+      confirmation_email!
+      true
+    else
+      false
+    end
+  end
+
+  def confirmation_email!
+    
+  end
+
+  def fullname
+    "#{firstname} #{lastname}"
+  end
+
+  def magictoken
+    ensure_authentication_token!
   end
 end
