@@ -24,4 +24,10 @@ class Guardian < ActiveRecord::Base
   def to_label
     "#{firstname} #{lastname}"
   end
+
+  def confirmed_for?(year)
+    return false if lastconfirmed.blank?
+    return false if lastconfirmed < year
+    return true
+  end
 end

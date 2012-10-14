@@ -4,6 +4,24 @@ u01:
         lastname: Richardson
         homephone: 6135551212
         email: mcr@sandelman.ca
+        lastconfirmed: 2012
+        postalcode: H0H1A1
+
+u02:
+        id: 20
+        firstname: Frank 
+        lastname: Jones
+        homephone: 6135551212
+        email: frank.jones.209@gmail.com
+        postalcode: H0H1A1
+
+u03:
+        id: 30
+        firstname: Fred 
+        lastname: Jones
+        homephone: 6135551212
+        email: fr.ankjones.209@gmail.com
+        lastconfirmed: 2011
         postalcode: H0H1A1
 
 admin:
