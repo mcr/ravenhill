@@ -26,6 +26,7 @@ class StudentsController < ApplicationController
   end
 
   active_scaffold :student do |config|
+    config.per_page = 30
     config.list.columns = [
       :lastname, :firstname, 
       :grade,
