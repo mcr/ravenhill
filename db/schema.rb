@@ -77,13 +77,14 @@ ActiveRecord::Schema.define(:version => 20120923200246) do
     t.boolean  "admin",                         :default => false
   end
 
+  add_index "guardians", ["email"], :name => "index_guardians_on_email", :unique => true
   add_index "guardians", ["reset_password_token"], :name => "index_guardians_on_reset_password_token", :unique => true
 
   create_table "student_guardians", :force => true do |t|
     t.integer  "student_id"
     t.integer  "guardian_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "students", :force => true do |t|
@@ -93,8 +94,8 @@ ActiveRecord::Schema.define(:version => 20120923200246) do
     t.integer  "teacher_id"
     t.integer  "display"
     t.boolean  "updated"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "teachers", :force => true do |t|

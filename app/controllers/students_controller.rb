@@ -47,8 +47,12 @@ class StudentsController < ApplicationController
 
   def beginning_of_chain
     if current_guardian.admin?
-      Student
-    else
+      if @teacher 
+	@teacher.students
+      else
+	Student
+      end
+    else 
       current_guardian.students
     end
   end
