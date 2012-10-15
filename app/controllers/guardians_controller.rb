@@ -105,4 +105,16 @@ class GuardiansController < ApplicationController
     debugger
     puts "Hello"
   end
+
+  # a get routine, return a page giving some Guardian details,
+  # and a place to opt-in, or opt-out.
+  def optin
+    
+  end
+
+  # process POST for opt-in/opt-out.
+  def confirm_optin
+    
+  end
+
 end

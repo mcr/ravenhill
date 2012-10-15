@@ -13,9 +13,14 @@ class Ability
       can :read,   :all
       can :update, :all
       can :create, :all
+      can :manage, :all
     else
       can :read,   Guardian, :id => @guardian.id
       can :update, Guardian, :id => @guardian.id
+      can :optin,      Guardian, :id => @guardian.id
+      can :wrongemail, Guardian, :id => @guardian.id
+      can :confirm_optin,      Guardian, :id => @guardian.id
+      can :confirm_wrongemail, Guardian, :id => @guardian.id
       can [:read, :update],   Student do |student|
 	student.guardians.inject(false) { |result, guard|
 	  result ||= (guard.id == @guardian.id)

@@ -1,4 +1,18 @@
+/* -*- css -*- */
 @import "active_scaffold";
+
+body {
+  background-color:#fff;
+  color:#000;
+  font-family:Arial,Helvetica,"Bitstream Vera Sans",sans-serif;
+  font-size:12pt;
+  width:100%;
+}
+
+html body {
+  background:transparent;
+  width:auto;
+}
 
 ul.guardians-input.checkbox-list {
   width: 80%;
@@ -33,4 +47,77 @@ li.form-element.volunteerbox dt {
 div.update-view.guardians-view.view ol {
   border: 3px solid green;
   position: relative;	
+}
+
+.close{
+	cursor:pointer;
+}
+
+/**** Boite alert top ****/
+#alert-bar{
+  margin-bottom:10px;
+  background:url(/images/alertbar.png) repeat-x;
+  left: 0;
+  top:  0;
+  width: 100%;
+  position: fixed;
+  z-index: 1000;
+}
+
+#alert-bar span,
+#alert-bar img
+{
+    float: left;
+}
+#alert-bar span{
+    margin: 6px;
+}
+
+
+/* put login part into a nice box */
+div.content {
+  padding: 20px;
+  margin-left: 20px;
+  min-width: 800px;
+  border: 2px dashed grey;
+}
+
+form.new_guardian {
+  margin-left: 50px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 3px;
+  border: 2px solid #00a023; 
+  max-width: 400px;
+}
+
+div#options{
+  height: 50px;
+}
+
+div#optin {
+  height: 30px;
+  min-width:  120px;
+  padding: 10px;
+  margin-left: 20x;
+  background-color: green;
+  float: left;
+}
+
+div#optout {
+  height: 30px;
+  min-width:  120px;
+  padding: 10px;
+  margin-left: 20x;
+  background-color: yellow;
+  float: left;
+}
+
+div#notme {
+  height: 30px;
+  min-width:  200px;
+  padding: 10px;
+  margin-left: 40x;
+  background-color: orange;
+  float: left;
 }

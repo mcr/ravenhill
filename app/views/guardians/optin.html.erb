@@ -1,0 +1,45 @@
+<div class="hello">
+Hello <%= @guardian.fullname %>.
+</div>
+
+<div id="emailmsg">
+We have your email as <%= @guardian.email %>.
+</div>
+
+<div id="homephone">
+We 
+<%= @guardian.homephone.blank? ? "do not" : "" %>
+have your home phone number on record.
+</div>
+
+<div id="workphone">
+We 
+<%= @guardian.workphone.blank? ? "do not" : "" %>
+have your work phone number on record.
+</div>
+
+<div id="options">
+<div id="optin">
+<%= form_for :guardian, :action => confirm_optin_guardian_path(@guardian) do |form| %>
+  <%= hidden_field_tag :accepted, '1' %>
+  <%= form.submit "View/Update" %>
+<% end %>
+</div>
+
+<div id="optout">
+<%= form_for :guardian, :action => confirm_optin_guardian_path(@guardian) do |form| %>
+  <%= hidden_field_tag :accepted, '0' %>
+  <%= form.submit "Decline" %>
+<% end %>
+</div>
+
+<div id="notme">
+<%= form_for :guardian, :action => confirm_wrongemail_guardian_path(@guardian) do |form| %>
+  <%= form.submit "Remove me/Wrong email" %>
+<% end %>
+</div>
+
+</div>
+
+
+
