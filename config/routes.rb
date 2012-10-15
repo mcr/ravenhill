@@ -6,6 +6,12 @@ Ravenhill::Application.routes.draw do
     collection do
       get 'welcome'
     end
+    member do
+      get  'optin' 
+      post 'confirm_optin'
+      get  'wrongemail'
+      post 'confirm_wrongemail'
+    end
     resources :students do
       as_routes
     end

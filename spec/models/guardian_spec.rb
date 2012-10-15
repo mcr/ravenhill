@@ -53,19 +53,19 @@ describe Guardian do
     it "should not send out a confirmation email if already confirmed" do
       u01 = guardians(:u01)
       
-      u01.confirmed_for?(2012).should == true
+      u01.send_confirmation!.should == true
     end
 
     it "should send out a confirmation email if never confirmed" do
       u02 = guardians(:u02)
       
-      u02.confirmed_for?(2012).should == false
+      u02.send_confirmation!.should == false
     end
 
     it "should send out a confirmation email if confirmed last year" do
       u03 = guardians(:u03)
       
-      u03.confirmed_for?(2012).should == false
+      u03.send_confirmation!.should == false
     end
   end
 end

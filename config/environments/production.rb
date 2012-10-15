@@ -59,3 +59,6 @@ Ravenhill::Application.configure do
   config.active_support.deprecation = :notify
 
 end
+
+$RavenhillAdminName = 'Churchill Student Directory'
+$RavenhillAdminEmail = 'mcr+churchill@sandelman.ca'

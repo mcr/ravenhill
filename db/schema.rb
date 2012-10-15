@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014165032) do
+ActiveRecord::Schema.define(:version => 20121014175520) do
 
   create_table "guardians", :force => true do |t|
     t.string   "firstname"
@@ -76,6 +76,8 @@ ActiveRecord::Schema.define(:version => 20121014165032) do
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                         :default => false
     t.integer  "lastconfirmed"
+    t.boolean  "accepted",                      :default => false
+    t.string   "authentication_token"
   end
 
   add_index "guardians", ["email"], :name => "index_guardians_on_email", :unique => true

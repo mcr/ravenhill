@@ -24,6 +24,15 @@ u03:
         lastconfirmed: 2011
         postalcode: H0H1A1
 
+# should not be on list.
+u04:
+        id: 40
+        firstname: Fredda
+        lastname: Jones
+        homephone: 6135551212
+        email: fra.nkjones.209@gmail.com
+        postalcode: H0H1A1
+
 admin:
         id: 4
         #admin: true

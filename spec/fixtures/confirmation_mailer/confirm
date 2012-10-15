@@ -1,0 +1,39 @@
+Dear <%= @guardian.fullname %>,
+
+You are receiving this email because your name and email was entered
+into the Churchill Alternative School student directory system.
+
+In contrast to previous years where this was all done with paper which
+was then put into a computer system, starting in 2012, the system has
+moved to a web based system.
+
+You may have concerns about the security of the system, and you can read
+more about it at: 
+   http://www.churchillnews.ca/story/about-churchill-alternative-school-student-directory
+
+In this email you will find a link to the web site.
+At our web site you will be asked to confirm your email address, and
+desire to proceed with the opt-in process.  
+ 
+If you decide to opt-in, you will receive another email that will permit
+you to review the information that we have, and that of your child(ren).
+As it is likely that we have some email addresses wrong or which are invalid,
+this two step process keeps us from disclosing your information to the wrong
+person. 
+
+You may opt-out at any point, and if you do nothing, it will be an opt-out.
+
+If you are receiving this email in error: you have never had children
+at Churchill, or your children are no longer at Churchill, it would help
+us weed out wrong information if you would use the wrong-email link.
+
+START OPT-IN PROCESS:
+	https://ravenhill.sandelman.ca/guardians/10/optin?magic=abcdabcd
+
+
+REPORT ERROR IN EMAIL:
+	https://ravenhill.sandelman.ca/guardians/10/notme?magic=abcdabcd
+
+
+--
+This email was sent to <%= @guardian.email %> by mcr+churchill@sandelman.ca.
