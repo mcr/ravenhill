@@ -60,5 +60,7 @@ Ravenhill::Application.configure do
 
 end
 
+ActiveRecord::Base.auditlogger = SyslogLogger.new('ravenhill')
+
 $RavenhillAdminName = 'Churchill Student Directory'
 $RavenhillAdminEmail = 'mcr+churchill@sandelman.ca'

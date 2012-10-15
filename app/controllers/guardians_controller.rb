@@ -109,12 +109,45 @@ class GuardiansController < ApplicationController
   # a get routine, return a page giving some Guardian details,
   # and a place to opt-in, or opt-out.
   def optin
-    
+    auditlogger.info "IP address #{request.ip} visited optin page for id\##{@guardian.id} email:#{@guardian.email}"
+    # just render
   end
 
   # process POST for opt-in/opt-out.
   def confirm_optin
-    
+    if params[:accepted].blank?
+      redirect_to optin_guardian_path(@guardian)
+      return;
+    end
+    accepted = @guardian.accepted = (params[:accepted].to_i == 1)
+
+    auditlogger.info "IP address #{request.ip} marked id\##{@guardian.id} email:#{@guardian.email} as accepted=#{@guardian.accepted}"
+    @guardian.updateconfirmation!
+
+    if(accepted) 
+      redirect_to guardian_path(@guardian)
+    else
+      @guardian.authentication_token = nil
+      redirect_to '/'
+    end
+
+    @guardian.save!
+  end
+
+  # get a page that permits confirmation that we have a wrong email
+  def wrongemail
+    auditlogger.info "IP address #{request.ip} visited wrongemail page for id\##{@guardian.id} email:#{@guardian.email}"
+    # just render
+  end
+
+  # process POST for wrong email
+  def confirm_wrongemail
+    @guardian.wrongemail_at = Time.now
+    auditlogger.info "IP address #{request.ip} marked id\##{@guardian.id} email:#{@guardian.email} as invalid at #{@guardian.wrongemail_at}"
+    @guardian.email = nil
+    @guardian.authentication_token = nil
+    @guardian.save!
+    redirect_to '/'
   end
 
 end

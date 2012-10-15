@@ -1,0 +1,23 @@
+<div class="hello">
+Hello.
+</div>
+
+<div id="emailmsg">
+We have your email as <%= @guardian.email %>.
+</div>
+
+<p>
+Please confirm that this email was recorded in error; that you are not
+part of the Churchill Alternative School Community.
+
+<div id="options">
+<div id="notme">
+<%= form_for :guardian, :url => { :action => :confirm_wrongemail} do |form| %>
+  <%= form.submit "Remove me/Wrong email" %>
+<% end %>
+</div>
+
+</div>
+
+
+

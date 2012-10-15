@@ -33,5 +33,7 @@ Ravenhill::Application.configure do
 
 end
 
+ActiveRecord::Base.auditlogger = Logger.new( ::Rails.root.to_s + "/log/devel-audit.log")
+
 $RavenhillAdminEmail = 'mcr+ravenhill@sandelman.ca'
 

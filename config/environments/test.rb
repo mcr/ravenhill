@@ -40,4 +40,5 @@ Ravenhill::Application.configure do
   config.action_mailer.default_url_options = { :host => 'www.example.com' }
 end
 
+ActiveRecord::Base.auditlogger = Logger.new(::Rails.root.to_s + "/log/test-audit.log")
 $RavenhillAdminEmail = 'mcr+ravenhill+test@sandelman.ca'

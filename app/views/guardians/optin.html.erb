@@ -20,21 +20,21 @@ have your work phone number on record.
 
 <div id="options">
 <div id="optin">
-<%= form_for :guardian, :action => confirm_optin_guardian_path(@guardian) do |form| %>
+<%= form_for :guardian, :url => { :action => :confirm_optin } do |form| %>
   <%= hidden_field_tag :accepted, '1' %>
   <%= form.submit "View/Update" %>
 <% end %>
 </div>
 
 <div id="optout">
-<%= form_for :guardian, :action => confirm_optin_guardian_path(@guardian) do |form| %>
+<%= form_for :guardian, :url => { :action => :confirm_optin} do |form| %>
   <%= hidden_field_tag :accepted, '0' %>
   <%= form.submit "Decline" %>
 <% end %>
 </div>
 
 <div id="notme">
-<%= form_for :guardian, :action => confirm_wrongemail_guardian_path(@guardian) do |form| %>
+<%= form_for :guardian, :url => { :action => :confirm_wrongemail} do |form| %>
   <%= form.submit "Remove me/Wrong email" %>
 <% end %>
 </div>

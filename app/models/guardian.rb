@@ -35,6 +35,11 @@ class Guardian < ActiveRecord::Base
     return true
   end
 
+  def update_confirmation!(year = nil)
+    year ||= current_confirmation_year
+    self.lastconfirmed = year
+  end
+
   def current_confirmation_year(n = Time.now)
     year  = n.year
     month = n.month

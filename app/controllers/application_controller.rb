@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
 
   protected
 
+  def auditlogger
+    ActiveRecord::Base.auditlogger
+  end
+
   def current_ability
     @current_ability ||= Ability.new(current_guardian, params[:format])
   end
