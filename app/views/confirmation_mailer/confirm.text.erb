@@ -28,11 +28,11 @@ at Churchill, or your children are no longer at Churchill, it would help
 us weed out wrong information if you would use the wrong-email link.
 
 START OPT-IN PROCESS:
-	<%= optin_guardian_url(:id => @guardian.id, :magic => @guardian.magictoken) %>
+	<%= optin_guardian_url(@guardian, :token => @guardian.magictoken) %>
 
 
 REPORT ERROR IN EMAIL:
-	<%= wrongemail_guardian_url(:id => @guardian.id, :magic => @guardian.magictoken) %>
+	<%= wrongemail_guardian_url(@guardian, :token => @guardian.magictoken) %>
 
 --
 This email was sent to <%= @guardian.email %> by mcr+churchill@sandelman.ca.

@@ -68,5 +68,6 @@ class Guardian < ActiveRecord::Base
 
   def magictoken
     ensure_authentication_token!
+    authentication_token
   end
 end
