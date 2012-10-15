@@ -36,7 +36,7 @@ class Guardian < ActiveRecord::Base
   end
 
   def current_confirmation_year(n = Time.now)
-    year = n.year
+    year  = n.year
     month = n.month
 
     # if after July, then it's next year
@@ -47,8 +47,9 @@ class Guardian < ActiveRecord::Base
     end
   end
 
-  def send_confirmation!
-    unless confirmed_for?(current_confirmation_year)
+  def send_confirmation!(year = nil)
+    year ||= current_confirmation_year
+    unless confirmed_for?(year)
       confirmation_email!
       true
     else
@@ -57,7 +58,8 @@ class Guardian < ActiveRecord::Base
   end
 
   def confirmation_email!
-    
+    email = ConfirmationMailer.confirm(self)
+    email.deliver
   end
 
   def fullname

@@ -72,4 +72,17 @@ namespace :ravenhill do
       puts "Sending confirmation email to #{g.email}"
     }
   end
+
+  desc "Send out opt-in confirmation emails to one guardian: GUARDIAN=XX"
+  task :optinemail => :environment do
+    gnum = ENV['GUARDIAN']
+    if gnum.blank?
+      puts "GUARDIAN=XXX must be an integer" 
+      return
+    end
+    gnum = gnum.to_i
+    g = Guardian.find(gnum)
+    puts "Sending confirmation email to #{g.email}"
+    g.send_confirmation!
+  end
 end

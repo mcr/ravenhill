@@ -9,7 +9,8 @@ class ConfirmationMailer < ActionMailer::Base
   def confirm(guardian)
     @guardian = guardian
 
-    mail to: @guardian.email
+    mail to: @guardian.email,
+      subject: "Churchill Alternative School: Student Directory"
   end
 
   def accepted(guardian)

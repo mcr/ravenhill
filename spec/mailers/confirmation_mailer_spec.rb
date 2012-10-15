@@ -9,9 +9,9 @@ describe ConfirmationMailer do
     }
 
     it "renders the headers" do
-      mail.subject.should eq("Confirm")
+      mail.subject.should eq("Churchill Alternative School: Student Directory")
       mail.to.should eq(["frank.jones.209@gmail.com"])
-      mail.from.should eq([$RavenhillAdminEmail])
+      mail.from.should eq("#{$RavenhillAdminName} <#{$RavenhillAdminEmail}>")
     end
 
     it "renders the body" do
