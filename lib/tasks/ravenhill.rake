@@ -65,4 +65,11 @@ namespace :ravenhill do
       end
     }
   end
+
+  desc "Send out opt-in confirmation emails to guardians who have not confirmed"
+  task :optinemails => :environment do
+    Guardian.unconfirmed.each { |g|
+      puts "Sending confirmation email to #{g.email}"
+    }
+  end
 end

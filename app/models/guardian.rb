@@ -17,6 +17,9 @@ class Guardian < ActiveRecord::Base
     includes(:students).merge(Student.active)
   }
   scope :mortal, :conditions => { :admin => false }
+  scope :unconfirmed, lambda { |year|
+    { :conditions => [ "lastconfirmed IS NULL or lastconfirmed < ?", year ] }
+  }
 
   def as_csv
     [ lastname, firstname, homephone, email ].join(',')

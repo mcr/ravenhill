@@ -67,5 +67,10 @@ describe Guardian do
       
       u03.send_confirmation!.should == false
     end
+
+    it "should find unconfirmed guardians" do
+      Guardian.mortal.unconfirmed(2012).count.should == 3
+      Guardian.mortal.unconfirmed(2011).count.should == 2
+    end
   end
 end
