@@ -23,7 +23,7 @@ set :bundle_flags,    "--deployment --quiet --no-prune"
 namespace :deploy do
   task :update_database_yml, :roles => [:app,:web] do
     db_config = "/data/#{user}/database.yml"
-    prod_config = "/home/#{user}/production.rb"
+    prod_config = "/data/#{user}/production.rb"
     run "cp #{db_config}   #{release_path}/config/database.yml"
     run "cp #{prod_config} #{release_path}/config/environments"
     releasenum=File.basename(release_path)
