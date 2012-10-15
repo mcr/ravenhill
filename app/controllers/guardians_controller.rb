@@ -99,6 +99,8 @@ class GuardiansController < ApplicationController
       config.columns[thing].form_ui = :checkbox
       config.columns[thing].css_class = 'volunteerbox'
     }
+    config.columns[:newsletters].form_ui = :select
+    config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both' ] }
   end
 
   def foo
@@ -122,12 +124,13 @@ class GuardiansController < ApplicationController
     accepted = @guardian.accepted = (params[:accepted].to_i == 1)
 
     auditlogger.info "IP address #{request.ip} marked id\##{@guardian.id} email:#{@guardian.email} as accepted=#{@guardian.accepted}"
-    @guardian.updateconfirmation!
+    @guardian.update_confirmation!
 
     if(accepted) 
-      redirect_to guardian_path(@guardian)
+      redirect_to edit_guardian_path(@guardian)
     else
-      @guardian.authentication_token = nil
+      @guardian.reset_authentication_token!
+      reset_session
       redirect_to '/'
     end
 
@@ -145,8 +148,9 @@ class GuardiansController < ApplicationController
     @guardian.wrongemail_at = Time.now
     auditlogger.info "IP address #{request.ip} marked id\##{@guardian.id} email:#{@guardian.email} as invalid at #{@guardian.wrongemail_at}"
     @guardian.email = nil
-    @guardian.authentication_token = nil
+    @guardian.reset_authentication_token!
     @guardian.save!
+    reset_session
     redirect_to '/'
   end
 
