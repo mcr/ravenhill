@@ -70,8 +70,11 @@ namespace :ravenhill do
   task :optinemails => :environment do
     Guardian.unconfirmed.each { |g|
       unless g.email.blank?
-	puts "Sending confirmation email to #{g.email}"
-	g.send_confirmation!
+	if g.send_confirmation!
+	  puts "Sending confirmation email to #{g.email}"
+	else
+	  puts "Already confirmed from #{g.email}"
+	end
       end
     }
   end
@@ -99,6 +102,6 @@ namespace :ravenhill do
     end
 	
     puts "Sending confirmation email to #{g.email}"
-    g.send_confirmation!
+    g.confirmation_email!
   end
 end
