@@ -44,6 +44,12 @@ class StudentsController < ApplicationController
     config.columns[:guardians].form_ui = :select
     config.columns[:display].form_ui = :checkbox
     config.columns[:display].label = "Include in directory?"
+
+
+    config.columns[:grade].form_ui = :select
+    config.columns[:grade].options = {
+      :options => [ 'JK', 'SK', '1', '2', '3', '4', '5', '6' ]
+    }
   end
 
   def beginning_of_chain
