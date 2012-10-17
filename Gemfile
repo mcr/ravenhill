@@ -24,6 +24,7 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+gem 'syslog-logger', "~> 1.6.8"
 gem 'jquery-rails'
 gem 'active_scaffold'
 gem 'therubyracer'
