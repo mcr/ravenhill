@@ -84,7 +84,7 @@ namespace :ravenhill do
     Guardian.find_all_by_email(nil).each { |g|
       s1 = g.students.first
       if s1 && s1.guardians.find_all_by_email(nil).count == s1.guardians.count
-	puts "#{s1.teacher},#{s1.fullname}\n"
+	puts "#{s1.teachername},#{s1.fullname}\n"
       end
     }
   end
