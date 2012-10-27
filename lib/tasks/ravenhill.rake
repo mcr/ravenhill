@@ -80,7 +80,7 @@ namespace :ravenhill do
   end
 
   desc "List of students with no email"
-  task :noemails => :envionment do
+  task :noemails => :environment do
     Guardian.find_all_by_email(nil).each { |g|
       s1 = g.students.first
       if s1 && s1.guardians.find_all_by_email(nil).count == s1.guardians.count

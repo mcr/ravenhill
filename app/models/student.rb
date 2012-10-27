@@ -16,8 +16,8 @@ class Student < ActiveRecord::Base
     "#{firstname} #{lastname}"
   end
   
-  def teacher
-    teacher.name
+  def teachername
+    teacher.try(:name)
   end
 
 end
