@@ -12,4 +12,12 @@ class Student < ActiveRecord::Base
     "#{lastname}, #{firstname}"
   end
 
+  def fullname
+    "#{firstname} #{lastname}"
+  end
+  
+  def teacher
+    teacher.name
+  end
+
 end
