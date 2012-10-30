@@ -72,6 +72,7 @@ namespace :ravenhill do
       unless g.email.blank?
 	if g.send_confirmation!
 	  puts "Sending confirmation email to #{g.email}"
+	  sleep 60
 	else
 	  puts "Already confirmed from #{g.email}"
 	end
