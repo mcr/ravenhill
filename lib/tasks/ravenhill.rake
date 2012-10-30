@@ -68,7 +68,8 @@ namespace :ravenhill do
 
   desc "Send out opt-in confirmation emails to guardians who have not confirmed"
   task :optinemails => :environment do
-    Guardian.unconfirmed.each { |g|
+    year = ENV['YEAR'] || 2012
+    Guardian.unconfirmed(2012).each { |g|
       unless g.email.blank?
 	if g.send_confirmation!
 	  puts "Sending confirmation email to #{g.email}"
