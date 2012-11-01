@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   before_filter :authenticate_guardian!
   before_filter :load_associations
   before_filter :update_guardian_view
-  before_filter :admin_load, :except => [ :index, :new ]
+  before_filter :admin_load, :except => [ :index, :new, :create ]
   load_and_authorize_resource :through => :current_guardian
 
   def update_guardian_view
@@ -60,7 +60,7 @@ class StudentsController < ApplicationController
   end
 
   def admin_load
-    if current_guardian.admin?
+    if current_guardian.admin? && params[:id]
       @student = Student.find(params[:id])
     end
     true
