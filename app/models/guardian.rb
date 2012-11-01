@@ -21,6 +21,12 @@ class Guardian < ActiveRecord::Base
     { :conditions => [ "lastconfirmed IS NULL or lastconfirmed < ?", year ] }
   }
 
+  scope :confirmed, lambda { |year|
+    { :conditions => [ "lastconfirmed >= ?", year ] }
+  }
+  scope :accepted, :conditions => { :accepted => true }
+  scope :declined, :conditions => { :accepted => false }
+
   def as_csv
     [ lastname, firstname, homephone, email ].join(',')
   end
