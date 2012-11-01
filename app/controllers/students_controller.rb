@@ -37,6 +37,9 @@ class StudentsController < ApplicationController
     config.update.columns.exclude [
       :student_guardians
     ]
+    config.create.columns.exclude [
+      :student_guardians
+    ]
 
     config.columns[:teacher].show_blank_record = false
     #config.columns[:teacher].inplace_edit = :ajax
