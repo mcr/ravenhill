@@ -1,8 +1,9 @@
 class StudentsController < ApplicationController
   before_filter :authenticate_guardian!
-  load_and_authorize_resource :through => :current_guardian
-
+  before_filter :load_associations
   before_filter :update_guardian_view
+  before_filter :admin_load
+  load_and_authorize_resource :through => :current_guardian
 
   def update_guardian_view
     if current_guardian.admin?
@@ -54,6 +55,14 @@ class StudentsController < ApplicationController
       :options => [ 'JK', 'SK', '1', '2', '3', '4', '5', '6' ]
     }
   end
+
+  def admin_load
+    if current_guardian.admin?
+      @student = Student.find(params[:id])
+    end
+    true
+  end
+    
 
   def beginning_of_chain
     if current_guardian.admin?
