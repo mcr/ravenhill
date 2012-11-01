@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
     if params[:teacher_id]
       @teacher = Teacher.find(params[:teacher_id])
     end
+    if params[:guardian_id]
+      @guardian = Guardian.find(params[:guardian_id])
+    end
   end
 
 end

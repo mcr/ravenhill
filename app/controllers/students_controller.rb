@@ -59,6 +59,8 @@ class StudentsController < ApplicationController
     if current_guardian.admin?
       if @teacher 
 	@teacher.students
+      elsif @guardian
+	@guardian.students
       else
 	Student
       end
