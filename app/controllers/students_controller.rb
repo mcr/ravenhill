@@ -2,7 +2,7 @@ class StudentsController < ApplicationController
   before_filter :authenticate_guardian!
   before_filter :load_associations
   before_filter :update_guardian_view
-  before_filter :admin_load
+  before_filter :admin_load, :except => [ :index ]
   load_and_authorize_resource :through => :current_guardian
 
   def update_guardian_view
