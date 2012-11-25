@@ -100,7 +100,7 @@ class GuardiansController < ApplicationController
       config.columns[thing].css_class = 'volunteerbox'
     }
     config.columns[:newsletters].form_ui = :select
-    config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both' ] }
+    config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both', 'None' ] }
   end
 
   def foo

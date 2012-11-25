@@ -118,7 +118,7 @@ class Admin::GuardiansController < Admin::AdminController
     }
 
     config.columns[:newsletters].form_ui = :select
-    config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both' ] }
+    config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both', 'None' ] }
   end
 
 
