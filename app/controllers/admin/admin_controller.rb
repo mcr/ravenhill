@@ -1,5 +1,6 @@
 class Admin::AdminController < ActionController::Base
   protect_from_forgery
+  layout "admin"
 
   #check_authorization :unless => :devise_controller?
   before_filter :load_associations

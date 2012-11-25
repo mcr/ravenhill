@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Churchill Student Directory (ADMIN)</title>
+    <!-- Changed by: , 15-Oct-2012 -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="shortcut icon" href="/images/favicon.jpg" type="image/x-icon" />
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tag %>
+
+    <!--[if !IE 7]>
+    <style type="text/css">
+      #site {display:table;height:100%}
+    </style>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div id="logo-title">
+      <div id="logo">
+	<a href="/" title="Home" rel="home">
+	  <img src="/images/logo.jpg" alt="Home" id="logo-image" />
+	</a>
+      </div>
+      <h1 id="site-name">
+	<a href="/" title="Home" rel="home">Churchill Student Directory (ADMIN)</a>
+      </h1>
+    </div> <!-- /#logo-title -->
+
+    <div id="top">
+      <p>This is the <a href="http://www.churchillnews.ca/">Churchill Alternative School community website</a>, student directory. 
+This is a private web site, restricted to school members only.
+Please note that this site has no data from the school board, and it is 
+not the <a href="http://www.churchillalternative.ocdsb.ca/">Board site</a>&nbsp;for our school.</p> 
+
+      <% if not (flash[:alert].nil? or flash[:alert].empty?) %>
+	<div id="alert-bar">
+	  <span class="close-button">
+	    <!-- fade effect needs to go into css -->
+	    <img src="/images/close.png" alt="[close alert bar]" onclick="$('alert-bar').hide("fade", {}, 1000);"/>
+	  </span>
+	  
+	  <span class="message" ><%= flash[:alert] %></span>
+	  
+	</div>
+      <% end %>
+    </div>
+
+    <div class="content">
+      <!-- CONTENT BEGIN -->
+      <%= yield %>
+	<!-- CONTENT END -->
+    </div>
+
+    <div id="footer">
+      <p>FOOTER</p>
+    <!-- Ravenhill RELEASE <%= $ReleaseNum %> -->
+    </div>
+  </body>
+</html>

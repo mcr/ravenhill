@@ -16,6 +16,10 @@ Ravenhill::Application.routes.draw do
       end
     end
     
+    resources :student_guardians do
+      as_routes
+    end
+
     resources :students do
       as_routes
     end
