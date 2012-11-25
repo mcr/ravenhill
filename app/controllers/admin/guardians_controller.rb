@@ -12,6 +12,11 @@ class Admin::GuardiansController < Admin::AdminController
     end
   end
 
+  def create_respond_to_html 
+    @record.save!
+    redirect_to admin_guardian_students_path(@record)
+  end
+
   active_scaffold :guardian do |config|
     config.list.columns = [
       :email,
@@ -28,6 +33,20 @@ class Admin::GuardiansController < Admin::AdminController
       :remember_created_at, :reset_password_sent_at,
       :updated, 
       :encrypted_password,
+    ]
+    config.create.columns = [
+       :firstname,
+       :lastname,
+       :newsletters,
+       :address1,
+       :address2,
+       :homephone,
+       :workphone,
+       :email,
+
+       :include_email,
+       :communityeventino,
+       #:students
     ]
     config.update.columns = [
        :firstname,
@@ -80,10 +99,8 @@ class Admin::GuardiansController < Admin::AdminController
        :Garden_Sale_i,
        :Back_to_Nature_i,
     ]
-    config.columns[:students].show_blank_record = false
-    config.columns[:email].inplace_edit = true 
-    config.columns[:firstname].inplace_edit = true 
-    config.columns[:lastname].inplace_edit = true 
+    config.columns[:students].show_blank_record = true
+
     [ :include_email, :communityeventino, :CASC_CoChairs,
       :Treasurer, :Secretary, :Volunteer_Coordinator_i,
       :Fundraising_Events_i, :Alternative_School_Advisory_i,
@@ -99,6 +116,7 @@ class Admin::GuardiansController < Admin::AdminController
       config.columns[thing].form_ui = :checkbox
       config.columns[thing].css_class = 'volunteerbox'
     }
+
     config.columns[:newsletters].form_ui = :select
     config.columns[:newsletters].options = { :options => [ 'Email', 'Paper', 'Both' ] }
   end

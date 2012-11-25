@@ -8,9 +8,15 @@ class Admin::StudentsController < Admin::AdminController
     config.list.columns = [
       :lastname, :firstname, 
       :grade,
+      :teacher,
+      :guardians,
+      :updated_at
+    ]
+    config.create.columns = [
+      :lastname, :firstname, 
+      :grade,
       :guardians,
       :teacher,
-      :updated_at
     ]
     config.update.columns.exclude [
       :student_guardians
@@ -36,6 +42,7 @@ class Admin::StudentsController < Admin::AdminController
     }
   end
 
+  protected
   def beginning_of_chain
     if @teacher 
       @teacher.students
@@ -45,5 +52,11 @@ class Admin::StudentsController < Admin::AdminController
       Student
     end
   end
-
+  
+  def do_new
+    super
+    if @guardian
+      @guardian.students << @record
+    end
+  end
 end
