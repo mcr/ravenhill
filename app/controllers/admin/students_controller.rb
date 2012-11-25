@@ -13,7 +13,8 @@ class Admin::StudentsController < Admin::AdminController
       :updated_at
     ]
     config.create.columns = [
-      :lastname, :firstname, 
+      :firstname, 
+      :lastname, 
       :grade,
       :teacher,
     ]
