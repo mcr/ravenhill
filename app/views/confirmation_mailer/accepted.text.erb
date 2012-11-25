@@ -3,7 +3,15 @@ Dear <%= @guardian.fullname %>,
 Thank you for responding to the Churchill Alternative School Directory.
 
 This is confirm that your name and address will be included in the 
-directory this year.
+directory this year.  
+
+If you want to confirm your information please visit this link:
+	<%= guardian_url(@guardian, :magic => @guardian.magictoken) %>
+
+If at some point, you wish to opt out, you may visit:
+	<%= optin_guardian_url(@guardian, :magic => @guardian.magictoken) %>
+
+The directory will be out in PDF very soon.
 
 --
 This email was sent to <%= @guardian.email %> by <%= $RavenhillAdminEmail %>

@@ -16,18 +16,21 @@ class ConfirmationMailer < ActionMailer::Base
   def accepted(guardian)
     @guardian = guardian
 
-    mail to: @guardian.email
+    mail to: @guardian.email,
+      subject: "Churchill Alternative School: Student Directory"
   end
 
   def declined(guardian)
     @guardian = guardian
 
-    mail to: @guardian.email
+    mail to: @guardian.email,
+      subject: "Churchill Alternative School: Student Directory"
   end
 
   def wrongemail(guardian)
     @guardian = guardian
 
-    mail to: @guardian.email
+    mail to: @guardian.email,
+      subject: "Churchill Alternative School: Student Directory"
   end
 end

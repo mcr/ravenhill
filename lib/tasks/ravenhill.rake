@@ -116,4 +116,16 @@ namespace :ravenhill do
     puts "Sending confirmation email to #{g.email}"
     g.confirmation_email!
   end
+
+  desc "Send out thank you to those who confirmed in YEAR=XXXX"
+  task :thankyou => :environment do
+    year = ENV['YEAR']
+    if !year.blank?
+      Guardian.confirmed(2012).each { |g|
+	g.accepted
+	sleep 20
+	puts "Sending confirmation email to #{g.email}"
+      }
+    end
+  end
 end

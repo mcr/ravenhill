@@ -73,6 +73,11 @@ class Guardian < ActiveRecord::Base
     email.deliver
   end
 
+  def accept_email!
+    email = ConfirmationMailer.accepted(self)
+    email.deliver
+  end
+
   def fullname
     "#{firstname} #{lastname}"
   end
