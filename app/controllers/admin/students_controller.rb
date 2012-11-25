@@ -16,7 +16,6 @@ class Admin::StudentsController < Admin::AdminController
       :lastname, :firstname, 
       :grade,
       :teacher,
-      :guardians,
     ]
     config.update.columns.exclude [
       :student_guardians
@@ -40,6 +39,13 @@ class Admin::StudentsController < Admin::AdminController
     config.columns[:grade].options = {
       :options => [ 'JK', 'SK', '1', '2', '3', '4', '5', '6' ]
     }
+  end
+
+  def create
+    do_create
+    if @guardian
+      @guardian.students << @record
+    end
   end
 
   protected
