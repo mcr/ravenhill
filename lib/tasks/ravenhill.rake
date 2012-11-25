@@ -128,4 +128,54 @@ namespace :ravenhill do
       }
     end
   end
+
+  desc "List all students and guardians that are confirmed in YEAR=XXXX"
+  task :directory => :environment do
+    year = ENV['YEAR']
+    students_seen = Hash.new
+    guardians_seen= Hash.new
+    listings = []
+    persons = Hash.new
+    if !year.blank?
+      Guardian.confirmed(2012).each { |g|
+	unless guardians_seen[g]
+	  guardians_seen[g] = true
+	  kids = []
+	  parents = [ g ]
+	  g.students.each { |s|
+	    unless students_seen[s]
+	      students_seen[s] = true
+	      kids << s  # add this student to the family
+	      s.guardians.each { |g2|
+		unless guardians_seen[g2]
+		  guardians_seen[g2] = true
+		  parents << g2
+		end
+	      }
+	    end
+	  }
+	  next if kids.length == 0
+	  print kids[0].lastname
+	  sep = ""
+	  kids.each { |k|
+	    print sprintf("%s %s[%s]", sep, k.firstname, k.teacher.name)
+	    sep=","
+	  }
+	  print "\n"
+	  address=nil
+	  parents.each { |p|
+	    debugger unless p
+	    unless p.address1 == address
+	      address = p.address1
+	      print sprintf("   %s %s\n", p.firstname, p.lastname)
+	      print sprintf("     %30s %s\n", p.address1, p.homephone)
+	      unless p.email.blank? || !p.include_email
+		print sprintf("     %30s\n", p.email)
+	      end
+	    end
+	  }
+	end
+      }
+    end
+  end
 end
