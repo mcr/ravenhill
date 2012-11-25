@@ -45,6 +45,9 @@ class Admin::StudentsController < Admin::AdminController
     do_create
     if @guardian
       @guardian.students << @record
+      redirect_to admin_guardian_students_path(@guardian)
+    else
+      redirect_to admin_student_path(@record)
     end
   end
 
