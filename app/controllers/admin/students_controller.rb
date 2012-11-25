@@ -8,15 +8,15 @@ class Admin::StudentsController < Admin::AdminController
     config.list.columns = [
       :lastname, :firstname, 
       :grade,
-      :teacher,
       :guardians,
+      :teacher,
       :updated_at
     ]
     config.create.columns = [
       :lastname, :firstname, 
       :grade,
-      :guardians,
       :teacher,
+      :guardians,
     ]
     config.update.columns.exclude [
       :student_guardians
@@ -56,7 +56,9 @@ class Admin::StudentsController < Admin::AdminController
   def do_new
     super
     if @guardian
-      @guardian.students << @record
+      true
+      #@guardian.students << @record
+      # this results in duplicate records.
     end
   end
 end
