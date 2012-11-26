@@ -86,4 +86,22 @@ class Guardian < ActiveRecord::Base
     ensure_authentication_token!
     authentication_token
   end
+
+  def homephone613
+    return '' if homephone.blank?
+
+    @homephone613 ||= _homephone613
+  end
+  
+  def _homephone613
+    np = homephone.gsub(/ /,'').gsub(/\-/,'')
+    if np[0..1]=="+1"
+      np = np[2..(np.length)]
+    end
+    if np[0..2]=="613"
+      np = np[3..(np.length)]
+    end
+    sprintf("%s-%s", np[0..2], np[3..6])
+  end
+
 end
