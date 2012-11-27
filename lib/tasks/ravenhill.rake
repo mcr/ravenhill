@@ -122,7 +122,7 @@ namespace :ravenhill do
     year = ENV['YEAR']
     if !year.blank?
       Guardian.confirmed(2012).each { |g|
-	g.accept_email
+	g.accept_email!
 	sleep 20
 	puts "Sending thank you email to #{g.email}"
       }
