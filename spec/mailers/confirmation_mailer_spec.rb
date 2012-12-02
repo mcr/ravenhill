@@ -25,7 +25,7 @@ describe ConfirmationMailer do
     }
 
     it "renders the headers" do
-      mail.subject.should eq("Accepted")
+      mail.subject.should eq("Churchill Alternative School: Student Directory Accepted")
       mail.to.should eq(["frank.jones.209@gmail.com"])
       mail.from.should eq([$RavenhillAdminEmail])
     end
@@ -41,7 +41,7 @@ describe ConfirmationMailer do
     }
 
     it "renders the headers" do
-      mail.subject.should eq("Declined")
+      mail.subject.should eq("Churchill Alternative School: Student Directory Declined")
       mail.to.should eq(["frank.jones.209@gmail.com"])
       mail.from.should eq([$RavenhillAdminEmail])
     end
@@ -57,7 +57,7 @@ describe ConfirmationMailer do
     }
 
     it "renders the headers" do
-      mail.subject.should eq("Wrongemail")
+      mail.subject.should eq("Churchill Alternative School: Student Directory Wrong Email")
       mail.to.should eq(["fr.ankjones.209@gmail.com"])
       mail.from.should eq([$RavenhillAdminEmail])
     end

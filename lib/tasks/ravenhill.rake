@@ -141,7 +141,8 @@ namespace :ravenhill do
 	unless guardians_seen[g]
 	  guardians_seen[g] = true
 	  
-	  listings[kidname] = g.guardian_render(guardians_seen)
+	  listing = g.guardian_render(guardians_seen)
+	  listings[kidname] = listing if listing
 	end
       }
       listings.keys.sort.each { |key|

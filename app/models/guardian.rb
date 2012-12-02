@@ -121,7 +121,7 @@ class Guardian < ActiveRecord::Base
 	}
       end
     }
-    next if kids.length == 0
+    return nil if kids.length == 0
     listing = []
     
     list = sprintf("<table><tr><td><span class=\"familyname\">%s</span></td><td class=\"children\">", kids[0].lastname)
