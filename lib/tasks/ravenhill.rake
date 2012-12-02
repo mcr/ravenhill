@@ -140,76 +140,19 @@ namespace :ravenhill do
       Guardian.confirmed(2012).each { |g|
 	unless guardians_seen[g]
 	  guardians_seen[g] = true
-	  kidname = nil
-	  kids = []
-	  parents = [ g ]
-	  g.students.each { |s|
-	    unless students_seen[s]
-	      students_seen[s] = true
-	      kidname = s.lastname if kidname.blank?
-	      kids << s  # add this student to the family
-	      s.guardians.each { |g2|
-		unless guardians_seen[g2]
-		  guardians_seen[g2] = true
-		  parents << g2
-		end
-	      }
-	    end
-	  }
-	  next if kids.length == 0
-	  listing = []
-
-	  list = kids[0].lastname
-	  sep = ""
-	  kids.each { |k|
-	    list = list + sprintf("%s %s[%s]", sep, k.firstname, k.teacher.name)
-	    sep=","
-	  }
-	  list = list 
-	  listing[0] = list
-	  address=nil
-	  phone  =nil
-	  lastname = nil
-	  names = []
-	  listing[1] = ""
-	  listing[2] = "ADDRESS"
-	  parents.each { |p|
-	    if (p.address1 != address or p.homephone613 != phone)
-	      address = p.address1      if address.blank?
-	      phone   = p.homephone613  if phone.blank?
-	      unless lastname
-		lastname = p.lastname
-	      end
-	      if lastname == p.lastname
-		names << p.firstname
-	      else
-		listing << sprintf("   %s %s", p.firstname, p.lastname)
-	      	listing << sprintf("     %30s %s", p.address1, p.homephone613)
-	      end
-	      unless p.email.blank? || !p.include_email
-		listing << sprintf("     %30s", p.email)
-	      end
-	    end
-	  }
-	  sep=""
-	  listing[1]="   "
-	  names.each { |n|
-	    listing[1] = listing[1] + sprintf("%s%s", sep, n)
-	    sep=" and "
-	  }
-	  listing[1] = listing[1] + " " + lastname 
-	  listing[2] = sprintf("     %30s %s", address, phone)
-
-	  listings[kidname] = listing 
+	  
+	  listings[kidname] = g.guardian_render(guardians_seen)
 	end
       }
       listings.keys.sort.each { |key|
 	listing = listings[key]
+	puts "<div class=\"entry\">\n"
 	listing.each { |line|
 	  unless line.blank?
 	    puts line
 	  end
 	}
+	puts "</div>\n"
       }
     end
   end

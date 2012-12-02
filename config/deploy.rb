@@ -26,6 +26,7 @@ namespace :deploy do
     prod_config = "/data/#{user}/production.rb"
     run "cp #{db_config}   #{release_path}/config/database.yml"
     run "cp #{prod_config} #{release_path}/config/environments"
+    run "ln -s -f /data/#{user}/#{application}/shared/directory #{release_path}/public"
     releasenum=File.basename(release_path)
     run "echo '$ReleaseNum = \"#{releasenum}\"' >#{release_path}/config/initializers/releasenum.rb"
     puts "Ran update database_yml"
