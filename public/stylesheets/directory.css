@@ -1,0 +1,101 @@
+h1 {
+  font-size: 40px;
+  text-align: center;
+}
+
+h2 {
+  margin-left: 20px;
+  font-size: 24px;
+  font-style: bold;
+}
+
+.notice {
+  margin:  30px;
+  padding: 20px;
+  border: 2px dashed grey;
+  font: sans-serif;
+  font-size: 18px;
+}
+.notice .warning {
+  font-style: bold;
+  color: red;
+}
+
+div.directory {
+  border-top: 10px;
+  padding: 30px;
+  /* width: 30%; */
+  column-count: 3;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 30px;
+  -moz-column-count: 3;
+  -moz-column-gap: 30px;
+}
+
+div.entry {
+  -webkit-column-break-inside:avoid;
+  -moz-column-break-inside:avoid;
+  -o-column-break-inside:avoid;
+  -ms-column-break-inside:avoid;
+  -column-break-inside:avoid;
+  position: relative;
+  min-height: 50px;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  margin-top:    5px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid grey;
+  font-size: 11px;
+  width: 100%;
+  display: table;
+}
+
+.entry table tr {
+  vertical-align: top;
+}
+
+.entry span.familyname {
+  font-size: 12px;
+  font-weight: bold;
+  margin-right: 5px;
+  width: 60px;
+  overflow: hidden;
+}
+
+.entry span.childname {
+  font-size: 11px;
+  overflow: hidden;
+  white-space: nowrap
+}
+
+.entry td.children {
+  padding: 0px;
+  margin: 0px;
+}
+
+.entry span.teacher {
+  font-size: 10px;
+  font-style: italic;
+}
+.entry span.guardians {
+  display: block;
+  padding-left: 20px;
+  font-size: 11px;
+  overflow: hidden;
+  clear: both;
+}
+.entry span.parentname {
+  font-weight: bold;
+}
+.entry span.address {
+  display: block;
+  padding-left: 30px;
+}
+.entry span.phone {
+  float: right;
+}
+.entry span.email {
+  display: block;
+  padding-left: 35px;
+  font: courier;
+}
