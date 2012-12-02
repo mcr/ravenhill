@@ -104,11 +104,11 @@ class Guardian < ActiveRecord::Base
     sprintf("%s-%s", np[0..2], np[3..6])
   end
 
-  def guardian_render(guardians_seen = Hash.new)
+  def guardian_render(guardians_seen = Hash.new, students_seen = Hash.new)
     kidname = nil
     kids = []
-    parents = [ g ]
-    g.students.each { |s|
+    parents = [ self ]
+    students.each { |s|
       unless students_seen[s]
 	students_seen[s] = true
 	kidname = s.lastname if kidname.blank?
@@ -166,7 +166,7 @@ class Guardian < ActiveRecord::Base
     listing[1] += "</span>"
     listing[2] = sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", address, phone)
     
-    return listing
+    return listing,kidname
   end
 
 end

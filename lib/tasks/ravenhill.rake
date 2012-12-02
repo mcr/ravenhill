@@ -135,14 +135,16 @@ namespace :ravenhill do
     students_seen = Hash.new
     guardians_seen= Hash.new
     listings = Hash.new
-    persons = Hash.new
     if !year.blank?
       Guardian.confirmed(2012).each { |g|
 	unless guardians_seen[g]
 	  guardians_seen[g] = true
 	  
-	  listing = g.guardian_render(guardians_seen)
-	  listings[kidname] = listing if listing
+	  stuff = g.guardian_render(guardians_seen, students_seen)
+	  if stuff
+	    (listing, kidname) = stuff
+	    listings[kidname] = listing
+	  end
 	end
       }
       listings.keys.sort.each { |key|
