@@ -181,7 +181,9 @@ class Guardian < ActiveRecord::Base
       }
       
       if addlast
-	listing[1] += " " + lastname 
+	if lastname != kids[0].lastname
+	  listing[1] += " " + lastname 
+	end
       end
       listing[1] += "</span>"
       
