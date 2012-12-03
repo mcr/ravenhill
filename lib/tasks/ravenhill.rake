@@ -147,6 +147,32 @@ namespace :ravenhill do
 	  end
 	end
       }
+
+      dirtime=Time.now.to_s(:db)
+
+      puts '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"     '
+      puts ' "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
+      puts '<html xmlns="http://www.w3.org/1999/xhtml">'
+      puts '<head>'
+      puts "<title>Churchill Family Directory (#{dirtime})</title>"
+      puts '    <link rel="stylesheet" type="text/css" href="../../stylesheets/directory.css">'
+      puts '    <link rel="stylesheet" type="text/css" media="print" href="../../stylesheets/directory-print.css">'
+      puts '    '
+      puts '  </head>'
+      puts '  <body>'
+      puts ''
+      puts '    <h1>Churchill Family Directory</h1>'
+      puts '    <h1>2012-2013</h1>'
+      puts ''
+      puts '<h2>About this Directory</h2>'
+      puts '<div class="notice">The Churchill Alternative School Council (CASC) produces and distributes this directory for the sole purpose of its members. It is not available to other '
+      puts 'organizations or businesses. Information in the directory is provided by permission of the parents of Churchill Alternative School. We try hard to ensure that the'
+      puts 'directory is current and correct, however if changes, additions or corrections are required, please contact directory@churchillschoolnews.ca.'
+      puts '<div class="warning">Reproduction by any means is strictly prohibited, unless for the personal use of CASC members</div>'
+      puts '</div>'
+
+      puts "<p class=\"small\"> As of:" + dirtime + "</p>\n"
+      puts "<div class=\"directory\">\n"
       listings.keys.sort.each { |key|
 	listing = listings[key]
 	puts "<div class=\"entry\">\n"
@@ -157,6 +183,7 @@ namespace :ravenhill do
 	}
 	puts "</div>\n"
       }
+      puts "</div></html></body>"
     end
   end
 end
