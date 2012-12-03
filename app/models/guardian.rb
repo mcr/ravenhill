@@ -191,10 +191,10 @@ class Guardian < ActiveRecord::Base
       parents.each { |p|
 	listing << sprintf("<span class=\"guardians\"><span class=\"parentname\">%s %s</span></span>", p.firstname, p.lastname)
 	listing << sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", p.address1, p.homephone613)
+	unless p.email.blank? || !p.include_email?
+	  listing << sprintf("<span class=\"email\">%s</span>", p.email)
+	end
       }
-      unless p.email.blank? || !p.include_email?
-	listing << sprintf("<span class=\"email\">%s</span>", p.email)
-      end
     end
     
     return listing,kidname
