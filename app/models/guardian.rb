@@ -94,7 +94,7 @@ class Guardian < ActiveRecord::Base
   end
   
   def _homephone613
-    np = homephone.gsub(/ /,'').gsub(/\-/,'')
+    np = homephone.gsub(/[ \-\(\)]/,'')
     if np[0..1]=="+1"
       np = np[2..(np.length)]
     end

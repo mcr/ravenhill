@@ -10,6 +10,15 @@ describe Guardian do
     end
   end
 
+  describe "formatting" do
+    it "should remove formatting from phone numbers" do
+      num = "(613) 555-1212"
+      u01 = Guardian.new
+      u01.homephone = num
+      u01.homephone613.should == "555-1212"
+    end
+  end
+
   describe "confirmation" do
     it "should derive confirmation year from rounding down to previous sept" do
       u01 = Guardian.new
