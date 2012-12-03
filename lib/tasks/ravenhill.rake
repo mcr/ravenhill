@@ -148,6 +148,13 @@ namespace :ravenhill do
 	end
       }
 
+      # render other guardian name with "see"
+      guardians_seen.each { |g,kidname|
+	if kidname != true
+	  listings[g.lastname] = g.other_guardian_render(kidname)
+	end
+      }
+
       dirtime=Time.now.to_s(:db)
 
       puts '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"     '

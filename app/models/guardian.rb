@@ -104,6 +104,16 @@ class Guardian < ActiveRecord::Base
     sprintf("%s-%s", np[0..2], np[3..6])
   end
 
+  def other_guardian_render(kidname)
+    [sprintf("<span class=\"familyname\">%s</span><span class=\"parentname\">%s</span> see <span class=\"familyname\">%s</span>",
+	    lastname, firstname, kidname)]
+  end
+
+  def he(str)
+    return '' if str.blank?
+    CGI::escapeHTML(str)
+  end
+
   def guardian_render(guardians_seen = Hash.new, students_seen = Hash.new)
     kidname = nil
     kids = []
@@ -125,10 +135,10 @@ class Guardian < ActiveRecord::Base
     return nil if kids.length == 0
     listing = []
     
-    list = sprintf("<table><tr><td><span class=\"familyname\">%s</span></td><td class=\"children\">", kids[0].lastname)
+    list = sprintf("<table><tr><td><span class=\"familyname\">%s</span></td><td class=\"children\">", he(kids[0].lastname))
     sep = ""
     kids.each { |k|
-      list = list + sprintf("%s <span class=\"childname\">%s[<span class=\"teacher\">%s</span>]</span>", sep, k.firstname, k.teacher.name)
+      list = list + sprintf("%s <span class=\"childname\">%s[<span class=\"teacher\">%s</span>]</span>", sep, he(k.firstname), he(k.teacher.name))
       sep=","
     }
     listing[0] = list + "</td></tr></table>"
@@ -149,21 +159,23 @@ class Guardian < ActiveRecord::Base
     
     # if parents have the same address then list it once, followed by emails
     if address_same_count == parents.size
-      listing[2] = sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", address, phone)
+      listing[2] = sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", he(address), he(phone))
       
       names = []
       samenames = []
       
       # see if parents have the same lastname.
       parents.each { |p|
-	lastname = p.lastname     if lastname.blank?
-	if lastname == p.lastname
+	if kidname == p.lastname
 	  samenames << p.firstname
+	else
+	  # remember that this guardian had a different lastname
+	  guardians_seen[p] = kidname
 	end
 	names << p.fullname
 	
 	unless p.email.blank? || !p.include_email?
-	  listing << sprintf("<span class=\"email\">%s</span>", p.email)
+	  listing << sprintf("<span class=\"email\">%s</span>", he(p.email))
 	end
       }
       
@@ -176,13 +188,13 @@ class Guardian < ActiveRecord::Base
 
       sep=""
       names.each { |n|
-	listing[1] += sprintf("%s<span class=\"parentname\">%s</span>", sep, n)
+	listing[1] += sprintf("%s<span class=\"parentname\">%s</span>", sep, he(n))
 	sep=" and "
       }
       
       if addlast
 	if lastname != kids[0].lastname
-	  listing[1] += " " + lastname 
+	  listing[1] += " " + he(lastname)
 	end
       end
       listing[1] += "</span>"
@@ -191,10 +203,10 @@ class Guardian < ActiveRecord::Base
       # otherwise, list each one, 
       
       parents.each { |p|
-	listing << sprintf("<span class=\"guardians\"><span class=\"parentname\">%s %s</span></span>", p.firstname, p.lastname)
-	listing << sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", p.address1, p.homephone613)
+	listing << sprintf("<span class=\"guardians\"><span class=\"parentname\">%s %s</span></span>", he(p.firstname), he(p.lastname))
+	listing << sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", he(p.address1), he(p.homephone613))
 	unless p.email.blank? || !p.include_email?
-	  listing << sprintf("<span class=\"email\">%s</span>", p.email)
+	  listing << sprintf("<span class=\"email\">%s</span>", he(p.email))
 	end
       }
     end
