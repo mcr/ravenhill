@@ -136,7 +136,7 @@ class Guardian < ActiveRecord::Base
     phone  =nil
     lastname = nil
     listing[1] = ""
-    listing[2] = "ADDRESS"
+    listing[2] = ""
     
     address_same_count = 0
     parents.each { |p|
