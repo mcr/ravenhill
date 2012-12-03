@@ -108,6 +108,7 @@ class Guardian < ActiveRecord::Base
     kidname = nil
     kids = []
     parents = [ self ]
+    guardians_seen[self]=true
     students.each { |s|
       unless students_seen[s]
 	students_seen[s] = true
@@ -130,43 +131,73 @@ class Guardian < ActiveRecord::Base
       list = list + sprintf("%s <span class=\"childname\">%s[<span class=\"teacher\">%s</span>]</span>", sep, k.firstname, k.teacher.name)
       sep=","
     }
-    list = list 
     listing[0] = list + "</td></tr></table>"
     address=nil
     phone  =nil
     lastname = nil
-    names = []
     listing[1] = ""
     listing[2] = "ADDRESS"
+    
+    address_same_count = 0
     parents.each { |p|
-      if (p.address1 != address or p.homephone613 != phone)
-	address = p.address1      if address.blank?
-	phone   = p.homephone613  if phone.blank?
-	unless lastname
-	  lastname = p.lastname
-	end
-	if lastname == p.lastname
-	  names << p.firstname
-	else
-	  listing << sprintf("<span class=\"guardians\"><span class=\"parentname\">%s %s</span></span>", p.firstname, p.lastname)
-	  listing << sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", p.address1, p.homephone613)
-	end
-	unless p.email.blank? || !p.include_email
-	  listing << sprintf("<span class=\"email\">%s</span>", p.email)
-	end
+      address = p.address1      if address.blank?
+      phone   = p.homephone613  if phone.blank?
+      if (p.address1 == address and p.homephone613 == phone)
+	address_same_count += 1
       end
     }
-    sep=""
-    listing[1] += "<span class=\"guardians\">"
-    names.each { |n|
-      listing[1] += sprintf("%s<span class=\"parentname\">%s</span>", sep, n)
-      sep=" and "
-    }
-    listing[1] += " " + lastname 
-    listing[1] += "</span>"
-    listing[2] = sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", address, phone)
+    
+    # if parents have the same address then list it once, followed by emails
+    if address_same_count == parents.size
+      listing[2] = sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", address, phone)
+      
+      names = []
+      samenames = []
+      
+      # see if parents have the same lastname.
+      parents.each { |p|
+	lastname = p.lastname     if lastname.blank?
+	if lastname == p.lastname
+	  samenames << p.firstname
+	end
+	names << p.fullname
+	
+	unless p.email.blank? || !p.include_email?
+	  listing << sprintf("<span class=\"email\">%s</span>", p.email)
+	end
+      }
+      
+      listing[1] = "<span class=\"guardians\">"
+      addlast = false
+      if samenames.size == parents.size
+	names = samenames
+	addlast = true
+      end
+
+      sep=""
+      names.each { |n|
+	listing[1] += sprintf("%s<span class=\"parentname\">%s</span>", sep, n)
+	sep=" and "
+      }
+      
+      if addlast
+	listing[1] += " " + lastname 
+      end
+      listing[1] += "</span>"
+      
+    else
+      # otherwise, list each one, 
+      
+      parents.each { |p|
+	listing << sprintf("<span class=\"guardians\"><span class=\"parentname\">%s %s</span></span>", p.firstname, p.lastname)
+	listing << sprintf("<span class=\"address\">%s</span> <span class=\"phone\">%s</span>", p.address1, p.homephone613)
+      }
+      unless p.email.blank? || !p.include_email?
+	listing << sprintf("<span class=\"email\">%s</span>", p.email)
+      end
+    end
     
     return listing,kidname
   end
-
+  
 end
